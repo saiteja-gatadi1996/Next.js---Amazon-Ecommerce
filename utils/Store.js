@@ -23,6 +23,12 @@ function reducer(state, action) {
         : [...state.cart.cartItems, newItem]; // if item already doesn't exist  in the cart we assume it as a newItem and we are appending that newItem to the cart
       return { ...state, cart: { ...state.cart, cartItems } }; // now the cart state will be updated with the cartItems (resulted from line: 19)
     }
+    case "CART_REMOVE_ITEM": {
+      const cartItems = state.cart.cartItems.filter(
+        (product) => product.slug !== action.payload.slug
+      );
+      return { ...state, cart: { ...state.cart, cartItems } }; //
+    }
     default:
       return state;
   }

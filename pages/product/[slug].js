@@ -9,6 +9,7 @@ import { Store } from "../../utils/Store";
 const ProductScreen = () => {
   const { state, dispatch } = useContext(Store);
   const { query } = useRouter();
+  const router = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug); //picking up the particular item based on the router query params
 
@@ -19,13 +20,14 @@ const ProductScreen = () => {
     const existItem = state.cart.cartItems.find(
       (item) => item.slug === product.slug
     );
-    const quantity = existItem ? existItem.quantity + 1 : quantity;
+    const quantity = existItem ? existItem.quantity + 1 : 1;
 
     if (product.countInStock < quantity) {
       alert("Sorry, Product is Out of Stock");
       return;
     }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
+    router.push("/cart");
   };
 
   return (

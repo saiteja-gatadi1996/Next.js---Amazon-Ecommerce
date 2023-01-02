@@ -58,3 +58,7 @@ v) add below lines in globals.css (at the top)
 11. npm i -D @types/react
 
 12. Create a new file Store.js under utils folder.
+
+13. Create a new file cart.js under pages folder
+
+14. npm i @heroicons/react
