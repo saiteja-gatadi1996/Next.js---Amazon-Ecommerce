@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import { Store } from "../utils/Store";
 import XCircleIcon from "../public/images/xcircle.js";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 const CartScreen = () => {
   const { state, dispatch } = useContext(Store);
@@ -92,12 +93,12 @@ const CartScreen = () => {
               <li>
                 <div className="pb-3 text-xl">
                   SubTotal: ({cartItems.reduce((a, c) => a + c.quantity, 0)}) :{" "}
-                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  ${cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                 </div>
               </li>
               <li>
                 <button
-                  onClick={() => router.push("/shipping")}
+                  onClick={() => router.push("login?redirect=/shipping")} //if login is true then redirect to shipping screen else keep it on login screen to enter creds
                   className="primary-button w-full"
                 >
                   {" "}
@@ -112,4 +113,5 @@ const CartScreen = () => {
   );
 };
 
-export default CartScreen;
+//to fix the Hydration initial UI render error
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });

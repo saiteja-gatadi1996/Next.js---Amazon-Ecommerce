@@ -62,3 +62,9 @@ v) add below lines in globals.css (at the top)
 13. Create a new file cart.js under pages folder
 
 14. npm i @heroicons/react
+
+15. npm i js-cookie (see in Store.js for usage of this)
+
+16. Create a new file under pages folder (login.js)
+
+17. npm i react-hook-form 
