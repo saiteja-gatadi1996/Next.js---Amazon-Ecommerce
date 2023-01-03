@@ -67,4 +67,20 @@ v) add below lines in globals.css (at the top)
 
 16. Create a new file under pages folder (login.js)
 
-17. npm i react-hook-form 
+17. npm i react-hook-form
+
+18. Create a new file under utils folder (db.js)
+
+19. npm i mongoose
+
+20. npm i bcryptjs
+
+21. Create a new file called seed.js under pages--->api folder
+
+22. Create a new folder called models on root folder and create a new file under that folder called User.js
+
+23. run your local and check this below URL endpoint in the browser after handler function is implemented in seed.js
+
+```js
+http://localhost:3000/api/seed
+```

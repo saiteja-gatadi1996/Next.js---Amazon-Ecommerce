@@ -41,7 +41,7 @@ const LoginScreen = () => {
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            // this is something we have used only after input type :)
+            // this is something we have used only after input type :) 
             {...register("password", {
               required: "Please enter password",
               minLength: {
