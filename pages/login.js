@@ -1,16 +1,45 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { signIn, useSession } from "next-auth/react";
 import Layout from "../components/Layout";
+import { getError } from "../utils/error";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const LoginScreen = () => {
+  const { data: session } = useSession(); //useSession is the hook from next-auth
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    //if user is already logged in, redirect
+    if (session?.user) {
+      router.push(redirect || "/"); // if redirect is false then redirect to HomePage
+    }
+  }, [redirect, router, session?.user]);
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
 
-  const submitHandler = ({ email, password }) => {};
+  const submitHandler = async ({ email, password }) => {
+    try {
+      const response = await signIn("credentials", {
+        // credentials says that we are authenticating with credentials provided in db (we can also use google or github)
+        redirect: false,
+        email,
+        password,
+      });
+      if (response.error) {
+        toast.error(response.error);
+      }
+    } catch (error) {
+      toast.error(getError(error));
+    }
+  };
   return (
     <Layout title="Login">
       <form
@@ -41,7 +70,7 @@ const LoginScreen = () => {
           <label htmlFor="password">Password</label>
           <input
             type="password"
-            // this is something we have used only after input type :) 
+            // this is something we have used only after input type :)
             {...register("password", {
               required: "Please enter password",
               minLength: {

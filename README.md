@@ -84,3 +84,11 @@ v) add below lines in globals.css (at the top)
 ```js
 http://localhost:3000/api/seed
 ```
+
+24. npm i next-auth (you can read the next.js auth documentation regarding this)
+
+25. create a new folder called auth and create a new file called [...nextauth].js
+
+26. Create a new file called error.js under utils folder
+
+27. npm i react-toastify
