@@ -92,3 +92,13 @@ http://localhost:3000/api/seed
 26. Create a new file called error.js under utils folder
 
 27. npm i react-toastify
+
+28. npm i @headlessui/react
+
+29. Create a new file DropdownLink.js inside the components folder
+
+30. Create a new file under pages folder called shipping.js
+
+31. Create a new file under components folder called CheckoutWizard.js
+
+32. Create a new file under pages folder called unauthorized.js

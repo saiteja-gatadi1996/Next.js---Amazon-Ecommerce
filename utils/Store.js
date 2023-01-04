@@ -7,7 +7,7 @@ const initialState = {
   // to get value from Cookie we are searching for cart key and if it exists use JSON.parse to convert string to JS Object
   cart: Cookies.get("cart")
     ? JSON.parse(Cookies.get("cart"))
-    : { cartItems: [] },
+    : { cartItems: [], shippingAddress: {} },
 };
 
 function reducer(state, action) {
@@ -34,6 +34,25 @@ function reducer(state, action) {
       );
       Cookies.set("cart", JSON.stringify({ ...state.cart, cartItems }));
       return { ...state, cart: { ...state.cart, cartItems } }; //
+    }
+    case "CART_RESET": {
+      return {
+        ...state,
+        cart: {
+          cartItems: [],
+          shippingAddress: { location: {} },
+          paymentMethod: "",
+        },
+      };
+    }
+    case "SAVE_SHIPPING_ADDRESS": {
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: { ...state.cart.shippingAddress, ...action.payload },
+        },
+      };
     }
     default:
       return state;
