@@ -102,3 +102,5 @@ http://localhost:3000/api/seed
 31. Create a new file under components folder called CheckoutWizard.js
 
 32. Create a new file under pages folder called unauthorized.js
+
+33. Create a new file under pages folder called payment.js
