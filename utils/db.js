@@ -36,6 +36,13 @@ const disconnect = async () => {
   }
 };
 
+const convertDocToObj = (doc) => {
+  doc._id = doc._id.toString();
+  doc.createdAt = doc.createdAt.toString();
+  doc.updatedAt = doc.updatedAt.toString();
+  return doc;
+};
+
 // Below format is to export two functions as object ex: db.connect, db.disconnect in other files
-const db = { connect, disconnect };
+const db = { connect, disconnect, convertDocToObj };
 export default db;

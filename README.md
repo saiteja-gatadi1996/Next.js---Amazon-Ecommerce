@@ -106,3 +106,13 @@ http://localhost:3000/api/seed
 33. Create a new file under pages folder called payment.js
 
 34. Create a new file under models folder called Product.js
+
+35. Loading products from MongoDB instead of data.products in index.js file (Home Component)
+
+36. After writing the getServerSideProps logic we have to convertDocToObj for products id (this is handled in db.js)
+
+37. npm i axios
+
+38. Create a new folder inside pages --> api folder and name it as products
+
+39. Create a new file called [id].js inside the products folder which is created as per 38th point
