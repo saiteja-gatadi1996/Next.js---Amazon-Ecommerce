@@ -104,3 +104,5 @@ http://localhost:3000/api/seed
 32. Create a new file under pages folder called unauthorized.js
 
 33. Create a new file under pages folder called payment.js
+
+34. Create a new file under models folder called Product.js
